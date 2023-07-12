@@ -23,12 +23,12 @@ public class Trabajador {
     private String email;
 
     //relacion trabajador-prevision
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "id_inst_prevision")
     private InstitucionPrevision institucionPrevision;
 
     //relacion trabajador-salud
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "id_inst_salud")
     private InstitucionSalud institucionSalud;
 
