@@ -45,7 +45,6 @@ public class UsuarioImpl implements IUsuarioService {
 
         return objUsuarioRepo.save(usuario);
     }
-
     @Override
     public void eliminarUsuario(int idUsuario) { //lleva void, porque al eliminar queda vacío, por lo que no retornaria nada (no lleva return)
         objUsuarioRepo.deleteById(idUsuario);

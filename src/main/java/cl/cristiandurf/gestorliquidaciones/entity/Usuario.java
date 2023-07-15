@@ -1,11 +1,10 @@
 package cl.cristiandurf.gestorliquidaciones.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
-import org.hibernate.dialect.function.TruncFunction;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 
 @Data
@@ -22,13 +21,14 @@ public class Usuario {
     private String clave;
     @Column(length = 100)
     private String nombre;
-    @Column(name = "apelliedo_1", length = 100)
+    @Column(name = "apellido_1", length = 100)
     private String apellido1;
     @Column(name = "apellido_2", length = 100)
     private String apellido2;
 
     //relacion usuario-perfil
-    @ManyToOne
+    @JsonIgnore
+    @ManyToOne(optional = false, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "id_perfil")
     private Perfil perfil;
 
@@ -40,6 +40,7 @@ public class Usuario {
     private long telefono;
 
     //relacion usuario-empleador
+    @JsonIgnore
     @OneToMany(mappedBy = "usuario")
     List<Empleador> listaEmpleadores;
 }

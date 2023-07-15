@@ -12,7 +12,7 @@ public class Liquidacion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_liquidacion")
-    private int idLiquidacion;
+    private long idLiquidacion;
 
     //relacion liquidacion-trabajador
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -27,7 +27,7 @@ public class Liquidacion {
     private int sueldoLiquido;
 
     //relacion liquidacion-salud
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "id_inst_salud")
     private InstitucionSalud institucionSalud;
 
@@ -35,7 +35,7 @@ public class Liquidacion {
     private int montoInstSalud;
 
     //relacion liquidacion-prevision
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "id_inst_previsional")
     private InstitucionPrevision institucionPrevision;
 
