@@ -5,6 +5,11 @@ import lombok.Data;
 
 import java.util.List;
 
+/**
+ * @author Cristian Durán
+ * @version 0.0.1
+ * @since 16-07-2023
+ */
 @Data //atajo para el método ToString, Getter, Setter y constructores, viene del lombok
 @Entity //conecta la class con la BD, viene del spring
 @Table(name = "perfil") //nombre de la tabla en la BD

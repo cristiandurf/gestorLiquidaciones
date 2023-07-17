@@ -7,8 +7,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
+/**
+ * @author Cristian Durán
+ * @version 0.0.1
+ * @since 16-07-2023
+ */
 @Controller
 @RequestMapping("/usuario")
 public class UsuarioController {
@@ -23,6 +29,7 @@ public class UsuarioController {
 
     @PostMapping("/crearUsuario")
     public String crearUsuario(@ModelAttribute Usuario usuario) {
+        usuario.setFechaCreacion(LocalDateTime.now());
         objIUsuarioService.crearUsuario(usuario);
         return "redirect:/usuario";
     }
@@ -34,31 +41,32 @@ public class UsuarioController {
         return "listarUsuarios";
     }
 
-    @GetMapping("{idUsuario}")
+    @GetMapping("/buscar/{idUsuario}")
     public String listarUsuarioPorid(@PathVariable int idUsuario, Model model) {
         Usuario usuario = objIUsuarioService.buscarUsuarioById(idUsuario);
         model.addAttribute("usuario", usuario);
         return "usuario";
     }
 
-    @GetMapping("/editar")
+    @GetMapping("/editar/{idUsuario}")
     public String mostrarFormularioEditarUsuario(@PathVariable Usuario usuario, Model model){
         Usuario usuarioEditar = objIUsuarioService.buscarUsuarioById(usuario.getIdUsuario());
         model.addAttribute("usuario", usuarioEditar);
         return "editarUsuario";
     }
 
-    @PostMapping("/{idUsuario}/editar")
-    public String actualizarUsuario(@PathVariable int idUsuario, @ModelAttribute Usuario usuario){
+    @PostMapping("/actualizar/{idUsuario}")
+    public String actualizarUsuario(@ModelAttribute Usuario usuario, @PathVariable int idUsuario){
+        usuario.setFechaCreacion(LocalDateTime.now());
         objIUsuarioService.actualizarUsuario(usuario, idUsuario);
         return "redirect:/usuario";
     }
 
-    @GetMapping("/{idUsuario}/eliminar")
+    @GetMapping("/eliminar/{idUsuario}")
     public String mostrarEliminarUsuario(@PathVariable int idUsuario, Model model){
         Usuario usuarioEliminar = objIUsuarioService.buscarUsuarioById(idUsuario);
         model.addAttribute("usuario", usuarioEliminar);
-        return "eliminarUsuario";
+        return "redirect:/usuario";
     }
 
 }

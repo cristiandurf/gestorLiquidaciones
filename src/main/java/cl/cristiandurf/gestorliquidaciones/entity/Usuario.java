@@ -7,6 +7,11 @@ import lombok.Data;
 import java.time.LocalDateTime;
 import java.util.List;
 
+/**
+ * @author Cristian Durán
+ * @version 0.0.1
+ * @since 16-07-2023
+ */
 @Data
 @Entity
 @Table(name = "usuario")

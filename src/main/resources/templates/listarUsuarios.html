@@ -12,7 +12,7 @@
 
 <div class="content-wrapper d-flex flex-column" style="min-height: 100vh">
     <main class="container text-center flex-grow-1">
-        <h3 class="pt-5">Lista de Usuarios</h3>
+        <h3 class="my-5">Lista de Usuarios</h3>
         <table class="table table-hover">
             <thead>
             <tr>
@@ -33,6 +33,12 @@
                 <td th:text="${usuario.apellido1}"></td>
                 <td th:text="${usuario.email}"></td>
                 <td th:text="${usuario.perfil.descripcion}"></td>
+                <td>
+                    <img src="/img/editar.png" alt="editar" type="button"
+                         th:action="@{/usuario/editar/{idUsuario}(idUsuario=${usuario.idUsuario})}"
+                         id="btnTablaEditarUsuario" class="me-2">
+                    <img src="/img/eliminar.png" alt="eliminar" type="button" id="btnTablaEliminarUsuario" class="ms-2">
+                </td>
             </tr>
             </tbody>
         </table>

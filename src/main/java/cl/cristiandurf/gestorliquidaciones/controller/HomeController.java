@@ -7,7 +7,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 /**
- * @author Cristian Durán - Nelson Medel
+ * @author Cristian Durán
  * @version 0.0.1
  * @since 13-07-2023
  */
@@ -19,8 +19,12 @@ public class HomeController {
     @GetMapping
     public String home() {
         logger.info("Estás en el home");
-        return "home"; //el return lo que hace, es ir a buscar a los templates del html
+        return "home"; //el return redirige a las vistas(templates)
     }
 
+    @GetMapping("/registro")
+    public String registro() {
+        return "registro";
+    }
 
 }

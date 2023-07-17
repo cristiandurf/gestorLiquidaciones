@@ -5,6 +5,11 @@ import lombok.Data;
 
 import java.time.LocalDate;
 
+/**
+ * @author Cristian Durán
+ * @version 0.0.1
+ * @since 16-07-2023
+ */
 @Data
 @Entity
 @Table(name = "liquidacion")

@@ -3,6 +3,11 @@ package cl.cristiandurf.gestorliquidaciones.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+/**
+ * @author Cristian Durán
+ * @version 0.0.1
+ * @since 16-07-2023
+ */
 @Data
 @Entity
 @Table(name = "trabajador")
