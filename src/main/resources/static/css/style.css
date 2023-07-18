@@ -1,0 +1,8 @@
+.icono_editar {
+    fill: black; /* Establece el color de relleno del icono en negro */
+    transition: fill 0.3s; /* Agrega una transición suave de 0.3 segundos para el cambio de color */
+}
+
+.icono_editar:hover {
+    fill: green; /* Al pasar el puntero del mouse sobre el icono, cambia el color de relleno a verde */
+}

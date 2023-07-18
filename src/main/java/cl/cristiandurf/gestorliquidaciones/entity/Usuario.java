@@ -33,7 +33,7 @@ public class Usuario {
 
     //relacion usuario-perfil
     @JsonIgnore
-    @ManyToOne(optional = false, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "id_perfil")
     private Perfil perfil;
 

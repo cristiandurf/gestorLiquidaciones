@@ -20,52 +20,51 @@ import java.util.List;
 public class UsuarioController {
 
     @Autowired
-    IUsuarioService objIUsuarioService;
+    IUsuarioService objUsuarioService;
 
     @GetMapping("/crearUsuario")
     public String mostrarFormularioCrearUsuario(Model model) {
+        model.addAttribute("usuario", new Usuario());
         return "crearUsuario";
     }
 
     @PostMapping("/crearUsuario")
     public String crearUsuario(@ModelAttribute Usuario usuario) {
-        usuario.setFechaCreacion(LocalDateTime.now());
-        objIUsuarioService.crearUsuario(usuario);
+        usuario.setFechaCreacion(LocalDateTime.now()); //Nota: buscar dejar horario stgo de Chile (4 horas de dif.)
+        objUsuarioService.crearUsuario(usuario);
         return "redirect:/usuario";
     }
 
     @GetMapping
     public String listarUsuarios(Model model) {
-        List<Usuario> listaUsuarios = objIUsuarioService.listarUsuarios();
+        List<Usuario> listaUsuarios = objUsuarioService.listarUsuarios();
         model.addAttribute("usuarios", listaUsuarios);
         return "listarUsuarios";
     }
 
     @GetMapping("/buscar/{idUsuario}")
     public String listarUsuarioPorid(@PathVariable int idUsuario, Model model) {
-        Usuario usuario = objIUsuarioService.buscarUsuarioById(idUsuario);
+        Usuario usuario = objUsuarioService.buscarUsuarioById(idUsuario);
         model.addAttribute("usuario", usuario);
         return "usuario";
     }
 
     @GetMapping("/editar/{idUsuario}")
     public String mostrarFormularioEditarUsuario(@PathVariable Usuario usuario, Model model){
-        Usuario usuarioEditar = objIUsuarioService.buscarUsuarioById(usuario.getIdUsuario());
+        Usuario usuarioEditar = objUsuarioService.buscarUsuarioById(usuario.getIdUsuario());
         model.addAttribute("usuario", usuarioEditar);
         return "editarUsuario";
     }
 
     @PostMapping("/actualizar/{idUsuario}")
     public String actualizarUsuario(@ModelAttribute Usuario usuario, @PathVariable int idUsuario){
-        usuario.setFechaCreacion(LocalDateTime.now());
-        objIUsuarioService.actualizarUsuario(usuario, idUsuario);
+        objUsuarioService.actualizarUsuario(usuario, idUsuario);
         return "redirect:/usuario";
     }
 
     @GetMapping("/eliminar/{idUsuario}")
     public String mostrarEliminarUsuario(@PathVariable int idUsuario, Model model){
-        Usuario usuarioEliminar = objIUsuarioService.buscarUsuarioById(idUsuario);
-        model.addAttribute("usuario", usuarioEliminar);
+        objUsuarioService.eliminarUsuario(idUsuario);
         return "redirect:/usuario";
     }
 

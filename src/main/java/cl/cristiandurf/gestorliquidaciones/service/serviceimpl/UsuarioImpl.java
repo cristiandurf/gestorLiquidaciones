@@ -39,12 +39,13 @@ public class UsuarioImpl implements IUsuarioService {
         usuario.setNombre(usuarioActualizar.getNombre());
         usuario.setApellido1(usuarioActualizar.getApellido1());
         usuario.setApellido2(usuarioActualizar.getApellido2());
-        usuario.setPerfil(usuarioActualizar.getPerfil());
+        //usuario.setPerfil(usuarioActualizar.getPerfil());
         usuario.setEmail(usuarioActualizar.getEmail());
         usuario.setTelefono(usuarioActualizar.getTelefono());
 
         return objUsuarioRepo.save(usuario);
     }
+
     @Override
     public void eliminarUsuario(int idUsuario) { //lleva void, porque al eliminar queda vacío, por lo que no retornaria nada (no lleva return)
         objUsuarioRepo.deleteById(idUsuario);
