@@ -50,9 +50,9 @@ public class UsuarioController {
     }
 
     @GetMapping("/editar/{idUsuario}")
-    public String mostrarFormularioEditarUsuario(@PathVariable Usuario usuario, Model model){
-        Usuario usuarioEditar = objUsuarioService.buscarUsuarioById(usuario.getIdUsuario());
-        model.addAttribute("usuario", usuarioEditar);
+    public String mostrarFormularioEditarUsuario(@PathVariable int idUsuario, Model model){ //Model sirve para enviar datos a otras vistas
+        Usuario usuarioEditar = objUsuarioService.buscarUsuarioById(idUsuario);
+        model.addAttribute("usuario", usuarioEditar); //model.addAttribute sirve para traer el modelo usuarioEditar con el nombre usuario
         return "editarUsuario";
     }
 

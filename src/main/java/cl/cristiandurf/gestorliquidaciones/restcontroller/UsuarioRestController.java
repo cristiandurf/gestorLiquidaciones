@@ -36,7 +36,7 @@ public class UsuarioRestController {
         return objUsuarioService.listarUsuarios();
     }
 
-    @PutMapping("/{idUsuario}") //actualizar informacion
+    @PutMapping("editar/{idUsuario}") //actualizar informacion
     public Usuario actualizarUsuario(@RequestBody Usuario usuarioActualizar, @PathVariable int idUsuario) {
         return objUsuarioService.actualizarUsuario(usuarioActualizar, idUsuario);
     }

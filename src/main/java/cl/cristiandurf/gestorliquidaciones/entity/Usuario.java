@@ -32,7 +32,7 @@ public class Usuario {
     private String apellido2;
 
     //relacion usuario-perfil
-    @JsonIgnore
+    @JsonIgnore //se colocó porque arrojaba el mismo usuario infinita veces
     @ManyToOne
     @JoinColumn(name = "id_perfil")
     private Perfil perfil;
