@@ -8,11 +8,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.List;
 
 /**
  * @author Cristian Durán
- * @version 0.0.1
+ * @version 0.0.2
  * @since 16-07-2023
  */
 @Controller
@@ -30,12 +31,12 @@ public class UsuarioController {
 
     @PostMapping("/crearUsuario")
     public String crearUsuario(@ModelAttribute Usuario usuario) {
-        usuario.setFechaCreacion(LocalDateTime.now()); //Nota: buscar dejar horario stgo de Chile (4 horas de dif.)
+        usuario.setFechaCreacion(LocalDateTime.now().minusHours(4));
         objUsuarioService.crearUsuario(usuario);
         return "redirect:/usuario";
     }
 
-    @GetMapping
+    @GetMapping("/lista")
     public String listarUsuarios(Model model) {
         List<Usuario> listaUsuarios = objUsuarioService.listarUsuarios();
         model.addAttribute("usuarios", listaUsuarios);
@@ -50,22 +51,22 @@ public class UsuarioController {
     }
 
     @GetMapping("/editar/{idUsuario}")
-    public String mostrarFormularioEditarUsuario(@PathVariable int idUsuario, Model model){ //Model sirve para enviar datos a otras vistas
+    public String vistaEditarUsuario(@PathVariable int idUsuario, Model model){
         Usuario usuarioEditar = objUsuarioService.buscarUsuarioById(idUsuario);
-        model.addAttribute("usuario", usuarioEditar); //model.addAttribute sirve para traer el modelo usuarioEditar con el nombre usuario
+        model.addAttribute("usuario", usuarioEditar);
         return "editarUsuario";
     }
 
-    @PostMapping("/actualizar/{idUsuario}")
-    public String actualizarUsuario(@ModelAttribute Usuario usuario, @PathVariable int idUsuario){
+    @PostMapping("/editar/{idUsuario}")
+    public String editarUsuario(@ModelAttribute Usuario usuario, @PathVariable int idUsuario){
         objUsuarioService.actualizarUsuario(usuario, idUsuario);
-        return "redirect:/usuario";
+        return "redirect:/usuario/lista";
     }
 
     @GetMapping("/eliminar/{idUsuario}")
-    public String mostrarEliminarUsuario(@PathVariable int idUsuario, Model model){
+    public String mostrarEliminarUsuario(@PathVariable int idUsuario){
         objUsuarioService.eliminarUsuario(idUsuario);
-        return "redirect:/usuario";
+        return "redirect:/usuario/lista";
     }
 
 }
