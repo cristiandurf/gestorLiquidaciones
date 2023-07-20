@@ -10,20 +10,23 @@
 <body>
 <nav th:include="~{../static/html/navbar1.html}"></nav>
 <div class="content-wrapper d-flex flex-column" style="min-height: 100vh">
-    <main class="container text-center flex-grow-1">
-        <h3 class="my-5 text-center">Inicio de Sesión</h3>
+    <main class="container flex-grow-1">
+        <h3 class="my-5 text-center">Iniciar Sesión</h3>
         <div class="d-flex justify-content-center">
             <form class="col-md-4">
                 <div class="mb-3">
                     <label for="run" class="form-label">RUN</label>
-                    <input type="number" class="form-control" id="run" placeholder="Ingrese su rut (sin puntos ni guión)">
+                    <input type="number" class="form-control" id="run"
+                           placeholder="Ingrese rut (sin puntos, ni verificador)">
                 </div>
                 <div class="mb-3">
-                    <label for="clave" class="form-label">Clave</label>
-                    <input type="password" class="form-control" id="clave" placeholder="Ingrese su clave">
-                    <div id="ayudaClave" class="form-text" style="text-align: right"><b>Olvidé mi clave</b></div>
+                    <label for="clave" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control" id="clave" placeholder="Ingrese contraseña">
+                    <div id="ayudaClave" class="form-text pt-2" style="text-align: right"><b>Olvidé mi clave</b></div>
                 </div>
-                <button type="submit" class="btn btn-secondary text-start">Iniciar Sesión</button>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-secondary col-6 mx-auto mt-4 py-2">Iniciar Sesión</button>
+                </div>
             </form>
         </div>
     </main>

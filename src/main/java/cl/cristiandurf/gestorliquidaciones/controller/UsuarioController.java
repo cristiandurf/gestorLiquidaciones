@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.util.List;
 
 /**
@@ -23,8 +22,13 @@ public class UsuarioController {
     @Autowired
     IUsuarioService objUsuarioService;
 
+    @GetMapping("/registro")
+    public String registro() {
+        return "registro";
+    }
+
     @GetMapping("/crearUsuario")
-    public String mostrarFormularioCrearUsuario(Model model) {
+    public String formCrearUsuario(Model model) {
         model.addAttribute("usuario", new Usuario());
         return "crearUsuario";
     }
@@ -33,7 +37,7 @@ public class UsuarioController {
     public String crearUsuario(@ModelAttribute Usuario usuario) {
         usuario.setFechaCreacion(LocalDateTime.now().minusHours(4));
         objUsuarioService.crearUsuario(usuario);
-        return "redirect:/usuario";
+        return "redirect:/usuario/lista";
     }
 
     @GetMapping("/lista")
@@ -44,14 +48,14 @@ public class UsuarioController {
     }
 
     @GetMapping("/buscar/{idUsuario}")
-    public String listarUsuarioPorid(@PathVariable int idUsuario, Model model) {
+    public String listarUsuarioById(@PathVariable int idUsuario, Model model) {
         Usuario usuario = objUsuarioService.buscarUsuarioById(idUsuario);
         model.addAttribute("usuario", usuario);
         return "usuario";
     }
 
     @GetMapping("/editar/{idUsuario}")
-    public String vistaEditarUsuario(@PathVariable int idUsuario, Model model){
+    public String formEditarUsuario(@PathVariable int idUsuario, Model model){
         Usuario usuarioEditar = objUsuarioService.buscarUsuarioById(idUsuario);
         model.addAttribute("usuario", usuarioEditar);
         return "editarUsuario";

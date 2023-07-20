@@ -9,29 +9,29 @@
 </head>
 <body>
 <nav th:include="~{../static/html/navbar1.html}"></nav>
-
 <div class="content-wrapper d-flex flex-column" style="min-height: 100vh">
-    <main class="container text-center flex-grow-1">
-        <h3 class="my-5 text-center">Inicio de Sesión</h3>
+    <main class="container flex-grow-1">
+        <h3 class="my-5 text-center">Registrarse</h3>
         <div class="d-flex justify-content-center">
             <form class="col-md-4">
                 <div class="mb-3">
                     <label for="run" class="form-label">RUN</label>
-                    <input type="number" class="form-control" id="run" placeholder="Ingrese su rut (sin puntos ni guión)">
+                    <input type="number" class="form-control" id="run"
+                           placeholder="Ingrese rut (sin puntos, ni verificador)">
                 </div>
                 <div class="mb-3">
                     <label for="nombre" class="form-label">Nombre</label>
-                    <input type="text" class="form-control" id="nombre" placeholder="Ingrese su nombre">
+                    <input type="text" class="form-control" id="nombre" placeholder="Ingrese nombre">
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" placeholder="Ingrese su email">
+                    <input type="email" class="form-control" id="email" placeholder="Ingrese email">
                 </div>
                 <div class="mb-3">
-                    <label for="clave" class="form-label">Clave</label>
-                    <input type="password" class="form-control" id="clave" placeholder="Ingrese su clave">
+                    <label for="clave" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control" id="clave" placeholder="Ingrese contraseña">
                 </div>
-                <div class="d-flex justify-content-between mb-3">
+                <div class="d-flex justify-content-between py-3">
                     <div class="form-check">
                         <input class="form-check-input" type="radio" id="empleador"
                                aria-label="Radio button for following text input">
@@ -43,7 +43,9 @@
                         <label class="form-check-label" for="contador">Contador</label>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-dark col-12 mt-4">Registrar</button>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-dark col-6 mx-auto mt-4 py-2">Registrar</button>
+                </div>
             </form>
         </div>
     </main>

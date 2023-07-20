@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -28,12 +29,12 @@ public class Empleador {
     @Column(name = "apellido_2", length = 100)
     private String apellido2;
     @Column(length = 500)
-    private int direccion;
+    private String direccion;
     @Column(length = 100)
     private String email;
 
     //relacion empleador-usuario
-    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "id_usuario")
     private Usuario usuario;
 
@@ -46,4 +47,7 @@ public class Empleador {
             joinColumns = @JoinColumn(name = "id_empleador"),
             inverseJoinColumns = @JoinColumn(name = "id_trabajador"))
     List<Trabajador> listaTrabajadores;
+
+    public void setFechaCreacion(LocalDateTime localDateTime) {
+    }
 }

@@ -5,9 +5,9 @@ import cl.cristiandurf.gestorliquidaciones.service.IEmpleadorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -22,12 +22,49 @@ public class EmpleadorController {
     @Autowired //inyecta las dependencias de un objeto y proporciona las instancias necesarias
     IEmpleadorService objEmpleadorService;
 
-    @GetMapping
-    public String listarEmpleadores(Model model){ //la clase Model sirve como un contenedor para datos que se envia a otras vistas, por el objeto model
+    @GetMapping("/lista")
+    public String listarEmpleadores(Model model){ //la clase "Model" sirve como un contenedor para datos que se envia a otras vistas, por el objeto model
         List<Empleador> listaEmpleadores = objEmpleadorService.listarEmpleadores();
         model.addAttribute("empleadores", listaEmpleadores);
         return "listarEmpleadores"; //el return, sirve para redirigir a la vista
     }
 
+    @GetMapping("/crearEmpleador")
+    public String formCrearEmpleador(Model model){
+        model.addAttribute("empleador", new Empleador());
+        return "crearEmpleador";
+    }
 
+    @PostMapping("/crearEmpleador")
+    public String crearEmpleador(@ModelAttribute Empleador empleador){
+        empleador.setFechaCreacion(LocalDateTime.now().minusHours(4));
+        objEmpleadorService.crearEmpleador(empleador);
+        return "redirect:/empleador/lista";
+    }
+
+    @GetMapping("/buscar/{idEmpleador}")
+    public String listarEmpleadorById(@PathVariable int idEmpleador, Model model){
+        Empleador empleador = objEmpleadorService.buscarEmpleadorById(idEmpleador);
+        model.addAttribute("empleador", empleador);
+        return "empleador";
+    }
+
+    @GetMapping("/editar/{idEmpleador}")
+    public String formEditarEmpleador(@PathVariable int idEmpleador, Model model){
+        Empleador empleadorEditar = objEmpleadorService.buscarEmpleadorById(idEmpleador);
+        model.addAttribute("empleador", empleadorEditar);
+        return "editarEmpleador";
+    }
+
+    @PostMapping("/editar/{idEmpleador}")
+    public String editarEmpleador(@ModelAttribute Empleador empleador, @PathVariable int idEmpleador){
+        objEmpleadorService.actualizarEmpleador(empleador, idEmpleador);
+        return "redirect:/empleador/lista";
+    }
+
+    @GetMapping("eliminar/{idEmpleador}")
+    public String mostrarEliminarUsuario(@PathVariable int idEmpleador){
+        objEmpleadorService.eliminarEmpleador(idEmpleador);
+        return "redirect:/empleador/lista";
+    }
 }

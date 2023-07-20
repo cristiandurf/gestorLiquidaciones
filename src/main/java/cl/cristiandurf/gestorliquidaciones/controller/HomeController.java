@@ -17,10 +17,4 @@ public class HomeController {
     public String home() {
         return "home";
     }
-
-    @GetMapping("/registro")
-    public String registro() {
-        return "registro";
-    }
-
 }

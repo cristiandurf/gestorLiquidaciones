@@ -10,41 +10,43 @@
 <body>
 <nav th:include="~{../static/html/navbar2.html}"></nav>
 <div class="content-wrapper d-flex flex-column" style="min-height: 100vh">
-    <main class="container text-center flex-grow-1">
-        <h1 class="pt-5">Crear Empleador</h1>
+    <main class="container flex-grow-1">
+        <h1 class="pt-5 text-center">Crear Empleador</h1>
         <div class="d-flex justify-content-center">
-            <form class="col-md-4">
+            <form class="col-md-4" method="post" th:action="@{/empleador/crearEmpleador}">
                 <div class="mb-3">
                     <label for="run" class="form-label">RUN</label>
                     <input type="number" class="form-control" id="run"
-                           placeholder="Ingrese su rut(sin puntos, número verificador)">
+                           placeholder="Ingrese rut (sin puntos, ni verificador)" name="run">
                 </div>
                 <div class="mb-3">
                     <label for="nombreUsuario" class="form-label">Nombre</label>
-                    <input type="text" class="form-control" id="nombreUsuario" placeholder="Ingrese nombre">
+                    <input type="text" class="form-control" id="nombreUsuario" placeholder="Ingrese nombre" name="nombre">
                 </div>
                 <div class="mb-3">
                     <label for="apellido1" class="form-label">Apellido 1</label>
-                    <input type="text" class="form-control" id="apellido1" placeholder="Ingrese primer apellido">
+                    <input type="text" class="form-control" id="apellido1" placeholder="Ingrese primer apellido" name="apellido1">
                 </div>
                 <div class="mb-3">
                     <label for="apellido2" class="form-label">Apellido 2 (opcional)</label>
-                    <input type="text" class="form-control" id="apellido2" placeholder="Ingrese segundo apellido">
+                    <input type="text" class="form-control" id="apellido2" placeholder="Ingrese segundo apellido" name="apellido2">
                 </div>
                 <div class="mb-3">
                     <label for="direccion" class="form-label">Dirección</label>
-                    <input type="text" class="form-control" id="direccion" placeholder="Ingrese dirección">
+                    <input type="text" class="form-control" id="direccion" placeholder="Ingrese dirección" name="direccion">
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
-                    <input type="text" class="form-control" id="email" placeholder="Ingrese email">
+                    <input type="email" class="form-control" id="email" placeholder="Ingrese email" name="email">
                 </div>
                 <div class="mb-3">
                     <label for="telefono" class="form-label">Teléfono</label>
                     <input type="number" class="form-control" id="telefono"
-                           placeholder="Ingrese los 8 dígitos de su teléfono">
+                           placeholder="Ingrese 8 dígitos" name="telefono">
                 </div>
-                <button type="submit" class="btn btn-dark col-12 mt-4">Registrar Empleador</button>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-dark col-6 mx-auto mt-4 py-2">Registrar Empleador</button>
+                </div>
             </form>
         </div>
     </main>
