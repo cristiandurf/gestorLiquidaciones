@@ -11,7 +11,7 @@
 <nav th:include="~{../static/html/navbar2.html}"></nav>
 <div class="content-wrapper d-flex flex-column" style="min-height: 100vh">
   <main class="container flex-grow-1">
-    <h1 class="pt-5 text-center">Editar Usuario</h1>
+    <h1 class="pt-5 text-center">Editar Empleador</h1>
     <div class="d-flex justify-content-center">
       <form class="col-md-4" th:action="@{/empleador/editar/{idEmpleador}(idEmpleador=${empleador.getIdEmpleador()})}" method="post">
         <div class="mb-3">

@@ -24,7 +24,7 @@ public class UsuarioController {
 
     @GetMapping("/registro")
     public String registro() {
-        return "registro";
+        return "registrarse";
     }
 
     @GetMapping("/crearUsuario")

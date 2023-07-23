@@ -23,7 +23,7 @@ public class InstitucionSalud {
     private Float porcDcto;
 
     //relacion salud-trabajador
-    @OneToMany(mappedBy = "institucionSalud")
+    @OneToMany(mappedBy = "instSalud")
     List<Trabajador> listaTrabajadores;
 
     //relacion salud-liquidacion

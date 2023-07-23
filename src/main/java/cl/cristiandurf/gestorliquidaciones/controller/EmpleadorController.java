@@ -1,7 +1,9 @@
 package cl.cristiandurf.gestorliquidaciones.controller;
 
 import cl.cristiandurf.gestorliquidaciones.entity.Empleador;
+import cl.cristiandurf.gestorliquidaciones.entity.Usuario;
 import cl.cristiandurf.gestorliquidaciones.service.IEmpleadorService;
+import cl.cristiandurf.gestorliquidaciones.service.IUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,8 +21,11 @@ import java.util.List;
 @RequestMapping("/empleador")
 public class EmpleadorController {
 
-    @Autowired //inyecta las dependencias de un objeto y proporciona las instancias necesarias
+    @Autowired //inyecta las dependencias de un objeto (empleador) y proporciona las instancias necesarias
     IEmpleadorService objEmpleadorService;
+
+    @Autowired //inyecta dependencias de usuario
+    IUsuarioService objUsuarioService;
 
     @GetMapping("/lista")
     public String listarEmpleadores(Model model){ //la clase "Model" sirve como un contenedor para datos que se envia a otras vistas, por el objeto model
@@ -31,7 +36,8 @@ public class EmpleadorController {
 
     @GetMapping("/crearEmpleador")
     public String formCrearEmpleador(Model model){
-        model.addAttribute("empleador", new Empleador());
+        List<Usuario> usuarios = objUsuarioService.listarUsuarios();
+        model.addAttribute("usuarios", usuarios);
         return "crearEmpleador";
     }
 
@@ -52,7 +58,9 @@ public class EmpleadorController {
     @GetMapping("/editar/{idEmpleador}")
     public String formEditarEmpleador(@PathVariable int idEmpleador, Model model){
         Empleador empleadorEditar = objEmpleadorService.buscarEmpleadorById(idEmpleador);
+        Usuario usuarioAgregar = (Usuario) objUsuarioService.listarUsuarios();
         model.addAttribute("empleador", empleadorEditar);
+        model.addAttribute("usuarios", usuarioAgregar);
         return "editarEmpleador";
     }
 
@@ -63,7 +71,7 @@ public class EmpleadorController {
     }
 
     @GetMapping("eliminar/{idEmpleador}")
-    public String mostrarEliminarUsuario(@PathVariable int idEmpleador){
+    public String mostrarEliminarEmpleador(@PathVariable int idEmpleador){
         objEmpleadorService.eliminarEmpleador(idEmpleador);
         return "redirect:/empleador/lista";
     }

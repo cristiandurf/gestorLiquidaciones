@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-@Service("empleadorimp")
+@Service("empleadorImpl")
 public class EmpleadorImpl implements IEmpleadorService {
 
     @Autowired

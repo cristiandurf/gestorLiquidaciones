@@ -3,6 +3,8 @@ package cl.cristiandurf.gestorliquidaciones.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.time.LocalDateTime;
+
 /**
  * @author Cristian Durán
  * @version 0.0.1
@@ -27,16 +29,19 @@ public class Trabajador {
     @Column(length = 100)
     private String email;
 
-    //relacion trabajador-prevision
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "id_inst_prevision")
-    private InstitucionPrevision institucionPrevision;
-
     //relacion trabajador-salud
-    @ManyToOne(optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "id_inst_salud")
-    private InstitucionSalud institucionSalud;
+    private InstitucionSalud instSalud;
+
+    //relacion trabajador-prevision
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "id_inst_prevision")
+    private InstitucionPrevision instPrevision;
 
     @Column
-    private int telefono;
+    private long telefono;
+
+    public void setFechaCreacion(LocalDateTime localDateTime) {
+    }
 }

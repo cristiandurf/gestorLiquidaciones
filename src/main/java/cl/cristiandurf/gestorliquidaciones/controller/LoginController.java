@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * @author Cristian Durán
- * @version 0.0.2
+ * @version 0.0.3
  * @since 13-07-2023
  */
 @Controller
@@ -15,7 +15,7 @@ public class LoginController {
 
     @GetMapping
     public String inicioSesion() {
-        return "login";
+        return "iniciarSesion";
     }
 
     @GetMapping("/bienvenida")

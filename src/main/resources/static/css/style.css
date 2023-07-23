@@ -12,3 +12,31 @@
 .icono_eliminar:hover {
     color: #eb0e0e;
 }
+
+.bi-person-circle::before {
+    font-size: 20px;
+}
+
+.bi-key-fill::before {
+    font-size: 20px;
+}
+
+.bi-envelope-fill::before {
+    font-size: 21px;
+}
+
+.bi-person-fill-gear::before {
+    font-size: 21px;
+}
+
+.bi-phone-fill::before {
+    font-size: 20px;
+}
+
+.bi-signpost-split-fill::before {
+    font-size: 21px;
+}
+
+.bi-person-plus-fill::before {
+    font-size: 18px;
+}

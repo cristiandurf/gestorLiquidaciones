@@ -23,7 +23,7 @@ public class InstitucionPrevision {
     private Float porcDcto;
 
     //relacion prevision-trabajador
-    @OneToMany(mappedBy = "institucionPrevision")
+    @OneToMany(mappedBy = "instPrevision")
     List<Trabajador> listaTrabajadores;
 
     //relacion prevision-liquidacion
