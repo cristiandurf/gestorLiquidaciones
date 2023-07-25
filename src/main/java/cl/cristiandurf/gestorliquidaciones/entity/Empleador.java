@@ -41,11 +41,8 @@ public class Empleador {
     @Column
     private long telefono;
 
-    //relacion empleador-trabajador utilizando "tabla intermedia"
-    @ManyToMany
-    @JoinTable(name = "empl_trab",
-            joinColumns = @JoinColumn(name = "id_empleador"),
-            inverseJoinColumns = @JoinColumn(name = "id_trabajador"))
+    //relacion empleador-trabajador
+    @ManyToMany(mappedBy = "empleadores")
     List<Trabajador> listaTrabajadores;
 
     public void setFechaCreacion(LocalDateTime localDateTime) {

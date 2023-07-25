@@ -70,7 +70,7 @@ public class TrabajadorController {
     public String formEditarUsuario(@PathVariable int idTrabajdor, Model model){
         Trabajador trabajadorEditar = objTrabajadorService.buscarTrabajadorById(idTrabajdor);
         model.addAttribute("trabajador", trabajadorEditar);
-        model.addAttribute("empleadores", objTrabajadorService.listarTrabajadores());
+        model.addAttribute("empleadores", objEmpleadorService.listarEmpleadores());
         model.addAttribute("listaInstSalud", objInstSaludService.listarInstSalud());
         model.addAttribute("listaInstPrevision", objInstPrevisionService.listarInstPrevision());
         return "editarTrabajador";
@@ -83,8 +83,8 @@ public class TrabajadorController {
     }
 
 
-    @PostMapping("/eliminar/{idTrabajador}")
-    public String mostrarEliminarTrabajador(@PathVariable int idTrabajador){
+    @GetMapping("/eliminar/{idTrabajador}")
+    public String eliminarTrabajador(@PathVariable int idTrabajador){
         objTrabajadorService.eliminarTrabajador(idTrabajador);
         return "redirect:/trabajador/lista";
     }

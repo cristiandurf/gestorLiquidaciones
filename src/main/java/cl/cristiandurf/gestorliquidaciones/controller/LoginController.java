@@ -15,7 +15,7 @@ public class LoginController {
 
     @GetMapping
     public String inicioSesion() {
-        return "iniciarSesion";
+        return "login";
     }
 
     @GetMapping("/bienvenida")

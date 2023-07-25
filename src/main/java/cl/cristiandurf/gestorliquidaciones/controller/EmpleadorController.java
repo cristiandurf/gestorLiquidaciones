@@ -27,15 +27,8 @@ public class EmpleadorController {
     @Autowired //inyecta dependencias de usuario
     IUsuarioService objUsuarioService;
 
-    @GetMapping("/lista")
-    public String listarEmpleadores(Model model){ //la clase "Model" sirve como un contenedor para datos que se envia a otras vistas, por el objeto model
-        List<Empleador> listaEmpleadores = objEmpleadorService.listarEmpleadores();
-        model.addAttribute("empleadores", listaEmpleadores);
-        return "listarEmpleadores"; //el return, sirve para redirigir a la vista
-    }
-
     @GetMapping("/crearEmpleador")
-    public String formCrearEmpleador(Model model){
+    public String crearEmpleador(Model model){
         List<Usuario> usuarios = objUsuarioService.listarUsuarios();
         model.addAttribute("usuarios", usuarios);
         return "crearEmpleador";
@@ -48,6 +41,13 @@ public class EmpleadorController {
         return "redirect:/empleador/lista";
     }
 
+    @GetMapping("/lista")
+    public String listarEmpleadores(Model model){ //la clase "Model" sirve como un contenedor para datos que se envia a otras vistas, por el objeto model
+        List<Empleador> listaEmpleadores = objEmpleadorService.listarEmpleadores();
+        model.addAttribute("empleadores", listaEmpleadores);
+        return "listarEmpleadores"; //el return, sirve para redirigir a la vista
+    }
+
     @GetMapping("/buscar/{idEmpleador}")
     public String listarEmpleadorById(@PathVariable int idEmpleador, Model model){
         Empleador empleador = objEmpleadorService.buscarEmpleadorById(idEmpleador);
@@ -56,11 +56,11 @@ public class EmpleadorController {
     }
 
     @GetMapping("/editar/{idEmpleador}")
-    public String formEditarEmpleador(@PathVariable int idEmpleador, Model model){
+    public String editarEmpleador(@PathVariable int idEmpleador, Model model){
         Empleador empleadorEditar = objEmpleadorService.buscarEmpleadorById(idEmpleador);
-        Usuario usuarioAgregar = (Usuario) objUsuarioService.listarUsuarios();
+        List<Usuario> usuarioEditar = objUsuarioService.listarUsuarios();
         model.addAttribute("empleador", empleadorEditar);
-        model.addAttribute("usuarios", usuarioAgregar);
+        model.addAttribute("usuarios", usuarioEditar);
         return "editarEmpleador";
     }
 

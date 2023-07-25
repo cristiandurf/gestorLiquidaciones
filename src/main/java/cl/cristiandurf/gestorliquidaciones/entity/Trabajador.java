@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * @author Cristian Durán
@@ -41,6 +42,12 @@ public class Trabajador {
 
     @Column
     private long telefono;
+
+    @ManyToMany //tabla intermedia, se genera acá porque cuando se crea un trabajador, se necesita agregar un empleador
+    @JoinTable(name = "empl_trab",
+            joinColumns = @JoinColumn(name = "id_trabajador"),
+            inverseJoinColumns = @JoinColumn(name = "id_empleador"))
+    private List<Empleador> empleadores;
 
     public void setFechaCreacion(LocalDateTime localDateTime) {
     }

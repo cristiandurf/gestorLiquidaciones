@@ -12,7 +12,7 @@
 <body>
 <nav th:include="~{../static/html/navbar2.html}"></nav>
 
-<div class="content-wrapper d-flex flex-column" style="min-height: 100vh">
+<div class="content-wrapper d-flex flex-column" style="min-height: 94vh">
   <main class="container text-center flex-grow-1">
     <h1 class="my-5">Lista de Trabajadores</h1>
     <div class="position-relative d-flex justify-content-start my-4">
@@ -24,11 +24,11 @@
         <th scope="col">ID</th>
         <th scope="col">Run</th>
         <th scope="col">Nombre</th>
-        <th scope="col">Primer apellido</th>
+        <th scope="col">Primer Apellido</th>
         <th scope="col">Email</th>
         <th scope="col">Teléfono</th>
         <th scope="col">Salud</th>
-        <th scope="col">Previsión</th>
+        <th scope="col">AFP</th>
         <th scope="col">Acción</th>
       </tr>
       </thead>
@@ -43,9 +43,9 @@
         <td th:text="${trabajador.instSalud.descripcion}"></td>
         <td th:text="${trabajador.getInstPrevision.descripcion}"></td>
         <td>
-          <a
+          <a th:href="@{/trabajador/editar/{idTrabajador}(idTrabajador=${trabajador.idTrabajador})}"
              class="bi bi-pencil-square mx-1 icono_editar"></a>
-          <a
+          <a th:href="@{/trabajador/eliminar/{idTrabajador}(idTrabajador=${trabajador.idTrabajador})}"
              class="bi bi-trash mx-1 icono_eliminar"></a>
         </td>
       </tr>

@@ -5,12 +5,21 @@
 .icono_editar:hover {
     color: #0fd142;
 }
+
+.bi-pencil-square::before {
+    font-size: 19px;
+}
+
 .icono_eliminar {
     color: #000000;
 }
 
 .icono_eliminar:hover {
     color: #eb0e0e;
+}
+
+.bi-trash::before {
+    font-size: 19px;
 }
 
 .bi-person-circle::before {
@@ -38,5 +47,9 @@
 }
 
 .bi-person-plus-fill::before {
+    font-size: 18px;
+}
+
+.bi-pencil-fill::before {
     font-size: 18px;
 }
