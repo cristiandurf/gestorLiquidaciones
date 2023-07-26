@@ -38,10 +38,10 @@ public class TrabajadorController {
     public String formCrearTrabajador(Model model){
         List<Empleador> listaEmpleadores = objEmpleadorService.listarEmpleadores();
         List<InstitucionSalud> instSalud = objInstSaludService.listarInstSalud();
-        List<InstitucionPrevision> insTPreviciones = objInstPrevisionService.listarInstPrevision();
+        List<InstitucionPrevision> instPrevisiones = objInstPrevisionService.listarInstPrevision();
         model.addAttribute("empleadores", listaEmpleadores);
         model.addAttribute("listaInstSalud", instSalud); //estructura(argumento1: nombre, argumento2: valor)
-        model.addAttribute("listaPrevisiones", insTPreviciones);
+        model.addAttribute("listaPrevisiones", instPrevisiones);
         return "crearTrabajador";
     }
 

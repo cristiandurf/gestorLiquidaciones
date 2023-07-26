@@ -9,7 +9,6 @@
 </head>
 <body>
 <nav th:include="~{../static/html/navbar2.html}"></nav>
-
 <div class="content-wrapper d-flex flex-column" style="min-height: 100vh">
     <main class="container text-center flex-grow-1">
         <h1 class="pt-5">Bienvenido "nombre usuario"</h1>
@@ -37,7 +36,7 @@
                 <div class="card h-100 mt-4" style="background: #000">
                     <div class="text-center">
                         <h5 class="card-title mb-0 py-5" style="color: #fff"><a
-                                    href="/trabajador/crearTrabajador" style="color: #fff; text-decoration:none">Crear
+                                href="/trabajador/crearTrabajador" style="color: #fff; text-decoration:none">Crear
                             Trabajador</a></h5>
                     </div>
                 </div>
@@ -45,7 +44,9 @@
             <div class="col">
                 <div class="card h-100 mt-4" style="background: #000">
                     <div class="text-center">
-                        <h5 class="card-title mb-0 py-5" style="color: #fff">Crear Liquidación</h5>
+                        <h5 class="card-title mb-0 py-5" style="color: #fff"><a
+                                href="/liquidacion/crearLiquidacion" style="color: #fff; text-decoration:none">Crear
+                            Liquidación</a></h5>
                     </div>
                 </div>
             </div>
@@ -77,7 +78,9 @@
             <div class="col">
                 <div class="card h-100 mt-4" style="background: #000">
                     <div class="text-center">
-                        <h5 class="card-title mb-0 py-5" style="color: #fff">Ver y/o editar liquidación</h5>
+                        <h5 class="card-title mb-0 py-5" style="color: #fff"><a
+                                href="/liquidacion/lista" style="color: #fff; text-decoration:none">Ver y/o editar
+                            liquidación</a></h5>
                     </div>
                 </div>
             </div>

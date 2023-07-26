@@ -35,7 +35,7 @@ public class Liquidacion {
     //relacion liquidacion-salud
     @ManyToOne(optional = false, fetch = FetchType.EAGER)
     @JoinColumn(name = "id_inst_salud")
-    private InstitucionSalud institucionSalud;
+    private InstitucionSalud instSalud;
 
     @Column(name = "monto_inst_salud")
     private int montoInstSalud;
@@ -43,7 +43,7 @@ public class Liquidacion {
     //relacion liquidacion-prevision
     @ManyToOne(optional = false, fetch = FetchType.EAGER)
     @JoinColumn(name = "id_inst_previsional")
-    private InstitucionPrevision institucionPrevision;
+    private InstitucionPrevision instPrevision;
 
     @Column(name = "monto_inst_previsional")
     private int montoInstPrevision;

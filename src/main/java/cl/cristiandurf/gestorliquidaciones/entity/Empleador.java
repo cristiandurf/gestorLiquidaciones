@@ -1,5 +1,6 @@
 package cl.cristiandurf.gestorliquidaciones.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -42,8 +43,9 @@ public class Empleador {
     private long telefono;
 
     //relacion empleador-trabajador
+    @JsonIgnore
     @ManyToMany(mappedBy = "empleadores")
-    List<Trabajador> listaTrabajadores;
+    private List<Trabajador> listaTrabajadores;
 
     public void setFechaCreacion(LocalDateTime localDateTime) {
     }

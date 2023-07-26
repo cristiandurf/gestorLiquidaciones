@@ -1,5 +1,6 @@
 package cl.cristiandurf.gestorliquidaciones.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -22,6 +23,7 @@ public class Perfil {
     @Column
     private boolean estado;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "perfil")
     private List<Usuario> listaUsuarios;
 }

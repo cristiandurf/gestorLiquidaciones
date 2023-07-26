@@ -1,5 +1,6 @@
 package cl.cristiandurf.gestorliquidaciones.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -43,6 +44,7 @@ public class Trabajador {
     @Column
     private long telefono;
 
+    @JsonIgnore
     @ManyToMany //tabla intermedia, se genera acá porque cuando se crea un trabajador, se necesita agregar un empleador
     @JoinTable(name = "empl_trab",
             joinColumns = @JoinColumn(name = "id_trabajador"),

@@ -19,7 +19,7 @@ import java.util.List;
 /**
  * @author Cristian Durán
  * @version 0.0.1
- * @since 24-07-2023
+ * @since 25-07-2023
  */
 @Controller
 @RequestMapping("/liquidacion")
@@ -39,10 +39,12 @@ public class LiquidacionController {
 
     @GetMapping("/crearLiquidacion")
     public String crearLiquidacion(Model model){
+        List<Trabajador> trabajadores = objTrabajadorService.listarTrabajadores();
         List<InstitucionSalud> instSalud = objInstSaludService.listarInstSalud();
         List<InstitucionPrevision> instPrevisiones = objInstPrevisionService.listarInstPrevision();
-        model.addAttribute("listaInstSalud", instSalud);
-        model.addAttribute("listaInstPrevisiones", instPrevisiones);
+        model.addAttribute("listaTrabajadores", trabajadores);
+        model.addAttribute("listaSalud", instSalud);
+        model.addAttribute("listaPrevisiones", instPrevisiones);
         return "crearLiquidacion";
     }
 
@@ -53,7 +55,7 @@ public class LiquidacionController {
         return "redirect:/liquidacion/lista";
     }
 
-    @GetMapping("/lista")
+    @GetMapping("lista")
     public  String listarLiquidacion(Model model){
         List<Liquidacion> listaLiquidaciones = objLiquidacionService.listarLiquidaciones();
         model.addAttribute("liquidaciones", listaLiquidaciones);
@@ -70,14 +72,20 @@ public class LiquidacionController {
     @GetMapping("/editar/{idLiquidacion}")
     public String editarLiquidacion(@PathVariable long idLiquidacion, Model model){
         Liquidacion liquidacionEditar = objLiquidacionService.buscarLiquidacionById(idLiquidacion);
-        List<Trabajador> trabajadorEditar = objTrabajadorService.listarTrabajadores();
-        List<InstitucionSalud> instSaludEditar = objInstSaludService.listarInstSalud();
-        List<InstitucionPrevision> instPrevisionEditar = objInstPrevisionService.listarInstPrevision();
+        //List<Trabajador> trabajadorEditar = objTrabajadorService.listarTrabajadores();
+        //List<InstitucionSalud> instSaludEditar = objInstSaludService.listarInstSalud();
+        //List<InstitucionPrevision> instPrevisionEditar = objInstPrevisionService.listarInstPrevision();
         model.addAttribute("liquidacion", liquidacionEditar);
-        model.addAttribute("trabajadores", trabajadorEditar);
-        model.addAttribute("listaInstSalud", instSaludEditar);
-        model.addAttribute("listaInstprevision", instPrevisionEditar);
+        //model.addAttribute("trabajadores", trabajadorEditar);
+        //model.addAttribute("listaSalud", instSaludEditar);
+        //model.addAttribute("listaPrevision", instPrevisionEditar);
         return "editarLiquidacion";
+    }
+
+    @PostMapping("/actualizar/{idLiquidacion}")
+    public String actualizarLiquidacion(@ModelAttribute Liquidacion liquidacion, @PathVariable long idLiquidacion){
+        objLiquidacionService.actualizarLiquidacion(liquidacion, idLiquidacion);
+        return "redirect:/trabajador/lista";
     }
 
     @GetMapping("/eliminar/{idLiquidacion}")

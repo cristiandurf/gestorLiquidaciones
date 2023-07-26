@@ -1,5 +1,6 @@
 package cl.cristiandurf.gestorliquidaciones.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -23,11 +24,13 @@ public class InstitucionSalud {
     private Float porcDcto;
 
     //relacion salud-trabajador
+    @JsonIgnore
     @OneToMany(mappedBy = "instSalud")
     List<Trabajador> listaTrabajadores;
 
     //relacion salud-liquidacion
-    @OneToMany(mappedBy = "institucionSalud")
+    @JsonIgnore
+    @OneToMany(mappedBy = "instSalud")
     List<Liquidacion> listaLiquidaciones;
 
 }

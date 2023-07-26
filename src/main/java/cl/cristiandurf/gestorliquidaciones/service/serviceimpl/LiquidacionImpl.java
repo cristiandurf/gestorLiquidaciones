@@ -35,9 +35,9 @@ public class LiquidacionImpl implements ILiquidacionService {
         Liquidacion liquidacion1 = objLiquidacionRepo.findById(idLiquidacion).orElseThrow(() -> new NoSuchElementException("Liquidación no encontrada"));
         liquidacion1.setTrabajador(liquidacionActualizar.getTrabajador());
         liquidacion1.setSueldoImponible(liquidacionActualizar.getSueldoImponible());
-        liquidacion1.setInstitucionSalud(liquidacionActualizar.getInstitucionSalud());
+        liquidacion1.setInstSalud(liquidacionActualizar.getInstSalud());
         liquidacion1.setMontoInstSalud(liquidacionActualizar.getMontoInstSalud());
-        liquidacion1.setInstitucionPrevision(liquidacionActualizar.getInstitucionPrevision());
+        liquidacion1.setInstPrevision(liquidacionActualizar.getInstPrevision());
         liquidacion1.setMontoInstPrevision(liquidacionActualizar.getMontoInstPrevision());
         liquidacion1.setTotalHaberes(liquidacionActualizar.getTotalDescuento());
         liquidacion1.setTotalHaberes(liquidacionActualizar.getTotalHaberes());
